@@ -23,10 +23,7 @@ namespace NetEti.DemoApplications
         {
             this._appSettings = GenericSingletonProvider.GetInstance<AppSettings>();
             this._propertyAccess = new PropertyAccess(this._appSettings);
-            this._appSettings.AppEnvAccessor.RegisterStringValueGetter(this._propertyAccess);
-            this.listBox1.Items.Add(String.Format("{0}: {1}", "Harry", this._appSettings.GetStringValue("Harry", "nix")));
-            this.listBox1.Items.Add(String.Format("{0}: {1}", "NewProperty", this._appSettings.GetStringValue("NewProperty", "nix")));
-            this.listBox1.Items.Add(String.Format("{0}: {1}", "ApplicationRootPath", this._appSettings.GetStringValue("ApplicationRootPath", "nix")));
+            this.listBox1.Items.Add(String.Format("{0}: {1}", "NewProperty", this._appSettings.NewProperty));
         }
     }
 }

@@ -2,13 +2,13 @@
 
 namespace NetEti.DemoApplications
 {
-    public sealed class AppSettings : BasicAppSettings
+    public sealed class AppSettings
     {
         public string NewProperty { get; set; }
 
-        private AppSettings() : base()
+        private AppSettings()
         {
-            this.NewProperty = "PropertyAccessDemo.NewProperty";
+            this.NewProperty = "--- PropertyAccessDemo.NewProperty ---";
         }
     }
 }
