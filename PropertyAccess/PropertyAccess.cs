@@ -1,6 +1,4 @@
-﻿using System;
-using NetEti.Globals;
-using System.Collections.Generic;
+﻿using NetEti.Globals;
 
 namespace NetEti.ApplicationEnvironment
 {
@@ -28,12 +26,12 @@ namespace NetEti.ApplicationEnvironment
         /// <param name="key">Der Zugriffsschlüssel (string)</param>
         /// <param name="defaultValue">Das default-Ergebnis (string)</param>
         /// <returns>Der Ergebnis-String</returns>
-        public string GetStringValue(string key, string defaultValue)
+        public string? GetStringValue(string key, string? defaultValue)
         {
-            string rtn = defaultValue;
+            string? rtn = defaultValue;
             if (this._loadedProperties.ContainsKey(key) && this._loadedProperties[key] != null)
             {
-                rtn = this._loadedProperties[key].ToString();
+                rtn = this._loadedProperties[key]?.ToString();
             }
             return rtn;
         }
@@ -47,9 +45,9 @@ namespace NetEti.ApplicationEnvironment
         /// <param name="key">Der Zugriffsschlüssel (string)</param>
         /// <param name="defaultValues">Das default-Ergebnis (string[])</param>
         /// <returns>Das Ergebnis-String-Array</returns>
-        public string[] GetStringValues(string key, string[] defaultValues)
+        public string?[]? GetStringValues(string key, string?[]? defaultValues)
         {
-            string rtn = GetStringValue(key, null);
+            string? rtn = GetStringValue(key, null);
             if (rtn != null)
             {
                 return new string[] { rtn };
@@ -77,18 +75,18 @@ namespace NetEti.ApplicationEnvironment
         /// <param name="defaultValue">Das default-Ergebnis vom Typ T</param>
         /// <returns>Wert zum key in den Rückgabe-Typ gecastet</returns>
         /// <exception cref="InvalidCastException">Typecast-Fehler</exception>
-        public T GetValue<T>(string key, T defaultValue)
+        public T? GetValue<T>(string key, T? defaultValue)
         {
-            object rtn = defaultValue;
+            object? rtn = defaultValue;
             if (this._loadedProperties.ContainsKey(key))
             {
                 rtn = this._loadedProperties[key];
-                if (typeof(T) != rtn.GetType())
+                if (typeof(T) != rtn?.GetType())
                 {
                     rtn = defaultValue;
                 }
             }
-            return (T)rtn;
+            return (T?)rtn;
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace NetEti.ApplicationEnvironment
         {
             this._owner = owner;
             this.Description = "Properties";
-            this._loadedProperties = new Dictionary<string, object>();
+            this._loadedProperties = new Dictionary<string, object?>();
             this.Load();
         }
 
@@ -109,7 +107,7 @@ namespace NetEti.ApplicationEnvironment
 
         private object _owner;
 
-        private Dictionary<string, object> _loadedProperties;
+        private Dictionary<string, object?> _loadedProperties;
 
         private void Load()
         {

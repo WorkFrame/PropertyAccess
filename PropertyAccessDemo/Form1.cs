@@ -1,7 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-
-using NetEti.ApplicationEnvironment;
+﻿using NetEti.ApplicationEnvironment;
 using NetEti.Globals;
 
 namespace NetEti.DemoApplications
@@ -11,8 +8,8 @@ namespace NetEti.DemoApplications
     /// </summary>
     public partial class Form1 : Form
     {
-        private PropertyAccess _propertyAccess;
-        private AppSettings _appSettings;
+        private PropertyAccess? _propertyAccess;
+        private AppSettings? _appSettings;
 
         public Form1()
         {
